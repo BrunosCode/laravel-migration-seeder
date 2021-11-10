@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 use App\Travel;
 
 class TravelsTableSeeder extends Seeder
@@ -11,14 +12,16 @@ class TravelsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $newTravel = new Travel();
-        $newTravel->nation = "Italy";
-        $newTravel->city = "Rome";
-        $newTravel->price = 2000;
-        $newTravel->partecipants = 20;
-        $newTravel->date = 2021;
-        $newTravel->save();
+        for ( $i = 0; $i < 100; $i++ ) {
+            $newTravel = new Travel();
+            $newTravel->nation = $faker->city();
+            $newTravel->city = $faker->country();
+            $newTravel->price = $faker->numberBetween(500, 5000);
+            $newTravel->partecipants = $faker->numberBetween(5, 30);
+            $newTravel->date = $faker->numberBetween(2020, 2030);
+            $newTravel->save();
+        }
     }
 }
