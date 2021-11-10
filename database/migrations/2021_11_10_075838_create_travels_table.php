@@ -17,9 +17,11 @@ class CreateTravelsTable extends Migration
             $table->id();
             $table->string("nation", 50);
             $table->string("city", 50);
+            $table->longText('description');
             $table->unsignedSmallInteger("price");
             $table->unsignedTinyInteger("partecipants");
-            $table->year("date");
+            $table->date("start_date");
+            $table->date("end_date");
             $table->timestamps();
         });
     }

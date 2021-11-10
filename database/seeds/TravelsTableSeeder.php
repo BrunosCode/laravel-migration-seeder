@@ -18,9 +18,11 @@ class TravelsTableSeeder extends Seeder
             $newTravel = new Travel();
             $newTravel->nation = $faker->city();
             $newTravel->city = $faker->country();
+            $newTravel->description = $faker->paragraph(2);
             $newTravel->price = $faker->numberBetween(500, 5000);
             $newTravel->partecipants = $faker->numberBetween(5, 30);
-            $newTravel->date = $faker->numberBetween(2020, 2030);
+            $newTravel->start_date = $faker->dateTimeThisDecade();
+            $newTravel->end_date = $faker->dateTimeThisDecade();
             $newTravel->save();
         }
     }
